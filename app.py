@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
 import streamlit as st
 import os
 from PyPDF2 import PdfReader
@@ -16,9 +10,6 @@ from langchain.chat_models import ChatOpenAI
 from htmlTemplates import css, bot_template, user_template
 from dotenv import load_dotenv
 
-load_dotenv()
-
-os.environ["OPENAI_API_KEY"] = os.getenv("api_key")
 def get_pdf_text(pdf_docs):
     text = ""
     for pdf in pdf_docs:
@@ -68,6 +59,7 @@ def handle_userinput(user_question):
 ########################################################################
 
 def main():
+    load_dotenv()
     st.set_page_config(page_title="CurieOSity", page_icon=":book:")
     st.write(css, unsafe_allow_html=True)
     
